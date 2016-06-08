@@ -1,13 +1,16 @@
 require 'gosu'
+require_relative 'background'
 
 class Game < Gosu::Window
 
   def initialize
     super(900, 550, fullscreen: false)
     self.caption = 'Flying hero!'
+    @background = Background.new
   end
 
   def draw
+    @background.draw
   end
 
 def button_down(id)
@@ -15,6 +18,11 @@ def button_down(id)
     close
   end
 end
+
+def update
+  @background.scroll!
+end
+
 
 
 
